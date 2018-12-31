@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 # import os
-# replaced os with environ...
-import environ
+import environ  # replaced os with environ...
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('project')
-print(type(APPS_DIR))  # +++nnn
+print(APPS_DIR)  # +++nnn
 env = environ.Env()
+# print(dir(env))  # +++nnn
 
 # This section added from an update to standards in CookieCutter Django to
 # ensure no errors are encountered at runserver/migrations
@@ -66,6 +66,7 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
+    'blogApp',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -104,13 +105,24 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': str(ROOT_DIR.path('db.sqlite3')),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         'ENGINE': 'mysql.connector.django',
+#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'NAME': 'webproject_data',
+#         # 'NAME': str(ROOT_DIR.path('db.sqlite3')),
+#         'USER': 'django_user',
+#         # 'USER': 'obitexlocal_usr',
+#         'PASSWORD': 'sQlqwerty123$*',
+#         'HOST': '127.0.0.1',
+#         'PORT': '',
+#         'init_command': 'SET default_storage_engine=INNODB',  # this must be removed after the table has been created
+#         'OPTIONS': {}
+#
+#
+#     }
+# }
 
 
 # Password validation
@@ -151,17 +163,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = str(ROOT_DIR('staticfiles'))
-
+STATIC_ROOT = str(ROOT_DIR.path('staticfiles') - 2) + '/staticfiles'
+print('static root:', STATIC_ROOT)
 STATICFILES_DIRS = (
     str(APPS_DIR.path('static')),
+    str(ROOT_DIR.path('static_in_proj/proj_static')),
 )
-
+print('static DIRS:', STATICFILES_DIRS)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
 MEDIA_URL = '/media/'
-
-MEDIA_ROOT = str(APPS_DIR('media'))
+# MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_ROOT = str(ROOT_DIR.path('staticfiles') - 2) + '/media'
