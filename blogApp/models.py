@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+# Post model manager
+class PublishManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishManager, self).get_queryset().filter(status='published')
+
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -22,6 +28,9 @@ class Post(models.Model):
     status = models.CharField(max_length=10,
                               choices=STATUS_CHOICES,
                               default='draft')
+
+    objects = models.Manager()  # default manager
+    published = PublishManager()  # custom manager
 
     class Meta:
         ordering = ('-publish',)

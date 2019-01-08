@@ -15,9 +15,7 @@ DATABASES = {
         'PASSWORD': env('DATABASE_PWORD', default='sQlqwerty123$*'),
         'HOST': '127.0.0.1',
         'PORT': '',
-        'init_command': 'SET default_storage_engine=INNODB',  # this must be removed after the table has been created
+        # 'init_command': 'SET default_storage_engine=INNODB',  # this must be removed after the table has been created
         'OPTIONS': {}
-
-
     }
 }

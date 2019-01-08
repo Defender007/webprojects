@@ -107,20 +107,18 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         'ENGINE': 'mysql.connector.django',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         # 'ENGINE': 'mysql.connector.django',
 #         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         'NAME': 'webproject_data',
-#         # 'NAME': str(ROOT_DIR.path('db.sqlite3')),
-#         'USER': 'django_user',
+#         # 'NAME': 'webproject_data',
+#         'NAME': str(ROOT_DIR.path('db.sqlite3')),
+#         # 'USER': 'django_user',
 #         # 'USER': 'obitexlocal_usr',
-#         'PASSWORD': 'sQlqwerty123$*',
-#         'HOST': '127.0.0.1',
-#         'PORT': '',
-#         'init_command': 'SET default_storage_engine=INNODB',  # this must be removed after the table has been created
-#         'OPTIONS': {}
-#
-#
+#         # 'PASSWORD': 'sQlqwerty123$*',
+#         # 'HOST': '127.0.0.1',
+#         # 'PORT': '',
+#         # 'init_command': 'SET default_storage_engine=INNODB',  # this must be removed after the table has been created
+#         # 'OPTIONS': {}
 #     }
 # }
 
@@ -156,7 +154,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+# USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
