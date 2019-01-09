@@ -1,3 +1,21 @@
+from django.test import SimpleTestCase, TestCase
+from django.urls import resolve, reverse, reverse_lazy
+from blogApp.views import post_detail, post_list
+
+
+class PostViewTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        number_of_post = 13
+
+    def test_get_post(self):
+        response = self.client.get('/blog/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_check_post_list_is_correct(self):
+        response = self.client.get('/blog/')
+        self.assertTemplateUsed(response, 'blog/post/list.html')
 
 # class YourTestClass(TestCase):
 #     @classmethod

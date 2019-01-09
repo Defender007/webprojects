@@ -5,10 +5,10 @@ from .models import Post
 
 def post_list(request):
     posts = Post.published.all()
-    # return render(request,
-    #               'blog/post/list.html',
-    #               {'posts': posts})
-    return HttpResponse('It worked')
+    return render(request,
+                  'blog/post/list.html',
+                  {'posts': posts})
+    # return HttpResponse('It worked')
 
 
 def post_detail(request, year, month, day, post):
