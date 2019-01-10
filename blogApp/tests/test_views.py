@@ -9,13 +9,13 @@ class PostViewTest(TestCase):
     def setUpTestData(cls):
         number_of_post = 13
 
-    def test_get_post(self):
+    def test_get_post_page(self):
         response = self.client.get('/blog/')
         self.assertEqual(response.status_code, 200)
 
     def test_check_post_list_is_correct(self):
         response = self.client.get('/blog/')
-        self.assertTemplateUsed(response, 'blog/post/list.html')
+        self.assertTemplateUsed(response, 'blogApp/post/list.html')
 
 # class YourTestClass(TestCase):
 #     @classmethod
