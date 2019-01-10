@@ -16,5 +16,5 @@ def post_detail(request, year, month, day, post):
                              publish__year=year, publish__month=month,
                              publish__day=day)
     return render(request,
-                  'blog/post/detail.html',
+                  'blogApp/post/detail.html',
                   {'post': post})
