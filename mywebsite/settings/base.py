@@ -161,10 +161,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# where production static files ...
 STATIC_ROOT = str(ROOT_DIR.path('staticfiles') - 2) + '/staticfiles'
 print('static root:', STATIC_ROOT)
+
+# where local static files will be served and production's collected...
 STATICFILES_DIRS = (
-    str(APPS_DIR.path('static')),
+    # str(APPS_DIR.path('static')),
     str(ROOT_DIR.path('static_in_proj/proj_static')),
 )
 print('static DIRS:', STATICFILES_DIRS)
